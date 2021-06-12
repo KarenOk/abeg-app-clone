@@ -69,6 +69,23 @@ body {
     padding: 20px;
 }
 
+.project .slide-up__wrapper {
+    overflow: hidden;
+    height: fit-content;
+}
+
+.project .slide-up {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(100%);
+    transition: all 0.6s ease 1s;
+}
+
+.project--active .slide-up {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 .project__left {
     width: 45%;
     margin-right: 15px;
@@ -76,6 +93,7 @@ body {
 
 .project__right {
     width: calc(55% - 15px);
+    height: 100%;
 }
 
 .project__heading {
@@ -101,38 +119,74 @@ body {
     background: #495DD0;
     border-radius: 50%;
     position: absolute;
+    animation: memojiBounceOut 0.5s forwards;
 }
 
 .memoji__wrapper:nth-of-type(1) {
     top: 35px;
     left: 35px;
+    width: 150px;
+    height: 150px;
 }
 
 .memoji__wrapper:nth-of-type(2) {
     top: 35px;
     right: 35px;
+    width: 100px;
+    height: 100px;
 }
 
 .memoji__wrapper:nth-of-type(3) {
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    top: 40%;
+    left: 40%;
+    width: 120px;
+    height: 120px;
 }
 
 .memoji__wrapper:nth-of-type(4) {
     bottom: 35px;
     left: 35px;
+    width: 80px;
+    height: 80px;
 }
 
 .memoji__wrapper:nth-of-type(5) {
     bottom: 35px;
     right: 35px;
+    width: 150px;
+    height: 150px;
 }
 
 .memoji__img {
     object-fit: contain;
     width: 100%;
     height: 130%;
+}
+
+.project--active .memoji__wrapper {
+    opacity: 0;
+    transform: scale(0);
+    animation: memojiBounceIn 0.7s forwards;
+}
+
+.project--active .memoji__wrapper:nth-of-type(1) {
+    animation-delay: 1.4s;
+}
+
+.project--active .memoji__wrapper:nth-of-type(2) {
+    animation-delay: 1.5s;
+}
+
+.project--active .memoji__wrapper:nth-of-type(3) {
+    animation-delay: 1.3s;
+}
+
+.project--active .memoji__wrapper:nth-of-type(4) {
+    animation-delay: 1.6s;
+}
+
+.project--active .memoji__wrapper:nth-of-type(5) {
+    animation-delay: 1.7s;
 }
 
 .footer {
@@ -181,4 +235,50 @@ body {
 
 .footer__circle--active::before {
     background-color: #FAAB1B;
+}
+
+@keyframes memojiBounceIn {
+    0% {
+        opacity: 0;
+        transform: scale(1);
+    }
+    30% {
+        opacity: 1;
+        transform: scale(1.3);
+    }
+    60% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    80% {
+        opacity: 1;
+        transform: scale(1.1);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes memojiBounceOut {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    30% {
+        opacity: 1;
+        transform: scale(1.1);
+    }
+    60% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    80% {
+        opacity: 1;
+        transform: scale(1.3);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(1);
+    }
 }
