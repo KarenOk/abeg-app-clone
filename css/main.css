@@ -105,6 +105,7 @@ main {
 .project__right {
     width: calc(55% - 15px);
     height: 100%;
+    position: relative;
 }
 
 .project__heading {
@@ -118,8 +119,25 @@ main {
     max-width: 400px;
 }
 
-.memojis {
-    position: relative;
+.project-img__overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(20deg, #495DD0, #7179b8);
+    border-radius: 100vh 250px 250px 150px;
+    z-index: -1;
+}
+
+.project-img {
+    width: 100%;
+    display: inline-block;
+    animation: rotateOut 0.2s forwards 0.5s;
+}
+
+.project--active .project-img {
+    width: 100%;
+    transform: rotate(20deg);
+    animation: rotateIn 0.2s forwards 1.3s;
 }
 
 .memoji__wrapper {
@@ -301,5 +319,23 @@ main {
     100% {
         opacity: 0;
         transform: scale(1);
+    }
+}
+
+@keyframes rotateIn {
+    0% {
+        transform: rotate(20deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+@keyframes rotateOut {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(20deg);
     }
 }
