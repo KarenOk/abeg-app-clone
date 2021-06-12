@@ -22,9 +22,12 @@ const debounce = (func, delay) => {
 	};
 };
 
-const updatePage = (type) => {
+const updatePage = (type, pageNo) => {
+	console.log(type, pageNo);
 	currentPage =
-		type === "inc"
+		type === "direct"
+			? pageNo
+			: type === "inc"
 			? Math.min(6, currentPage + 1)
 			: Math.max(1, currentPage - 1);
 
@@ -62,6 +65,12 @@ const handleKeyDown = debounce((event) => {
 		}
 	}
 }, 200);
+
+progressPoints.forEach((point, index) => {
+	point.addEventListener("click", () => {
+		updatePage("direct", index + 1);
+	});
+});
 
 window.addEventListener("wheel", handleWheelScroll);
 window.addEventListener("keydown", handleKeyDown);
