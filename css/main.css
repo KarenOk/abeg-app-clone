@@ -67,6 +67,15 @@ body {
     height: 100%;
     font-size: 1.1rem;
     padding: 20px;
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+}
+
+.project--active {
+    opacity: 1;
+    pointer-events: unset;
+    position: static;
 }
 
 .project .slide-up__wrapper {
@@ -200,7 +209,8 @@ body {
 }
 
 .footer__progress {
-    width: 60%;
+    width: 0%;
+    transition: width 1s ease-in;
     background-color: #FAAB1B;
     position: absolute;
     left: 0;
