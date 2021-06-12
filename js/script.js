@@ -31,18 +31,16 @@ const updatePage = (type) => {
 	pages.forEach((page, index) => {
 		if (index + 1 === currentPage) page.classList.add("project--active");
 		else page.classList.remove("project--active");
-		if (index + 1 === currentPage) console.log(page);
+	});
+
+	progressPoints.forEach((point, index) => {
+		if (index + 1 === currentPage)
+			point.classList.add("footer__circle--active");
+		else point.classList.remove("footer__circle--active");
 	});
 
 	progressBar.style.width = `calc(${(currentPage - 1) * 20}% + 10px)`;
 };
-
-function makeProjectActive() {
-	const project = document.querySelector(".project");
-	console.log(project);
-	project.classList.toggle("project--active");
-	console.log(project);
-}
 
 const handleWheelScroll = debounce((event) => {
 	const updateType = event.deltaY < 0 ? "inc" : "dec";
@@ -51,7 +49,6 @@ const handleWheelScroll = debounce((event) => {
 
 const handleKeyDown = debounce((event) => {
 	const { keyCode } = event;
-	console.log(keyCode);
 	switch (keyCode) {
 		case UP_ARROW_KEYCODE:
 		case LEFT_ARROW_KEYCODE: {

@@ -224,7 +224,6 @@ main {
     position: relative;
     padding-top: 15px;
     font-weight: 500;
-    font-size: 0;
 }
 
 .footer__circle::before {
@@ -240,13 +239,23 @@ main {
     background: #97A2E4;
 }
 
-.footer__circle--active {
+.footer__circle::after {
+    content: attr(data-circleno);
+    display: block;
+    position: absolute;
+    top: 15px;
     color: #FAAB1B;
     font-size: 0.8rem;
+    opacity: 0;
+    transition: 1s ease-in;
 }
 
 .footer__circle--active::before {
     background-color: #FAAB1B;
+}
+
+.footer__circle--active::after {
+    opacity: 1;
 }
 
 @keyframes memojiBounceIn {
