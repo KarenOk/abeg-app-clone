@@ -1,4 +1,5 @@
 let currentPage = 1;
+let lineBg = document.querySelector(".line-bg");
 let pages = document.querySelectorAll(".project");
 let progressBar = document.querySelector(".footer__progress");
 let progressPoints = document.querySelectorAll(".footer__circle");
@@ -23,7 +24,6 @@ const debounce = (func, delay) => {
 };
 
 const updatePage = (type, pageNo) => {
-	console.log(type, pageNo);
 	currentPage =
 		type === "direct"
 			? pageNo
@@ -41,6 +41,9 @@ const updatePage = (type, pageNo) => {
 			point.classList.add("footer__circle--active");
 		else point.classList.remove("footer__circle--active");
 	});
+
+	lineBg.style.transform = `translateX(${-160 * currentPage}px)`;
+	lineBg.style.transition = `transform 1s`;
 
 	progressBar.style.width = `calc(${(currentPage - 1) * 20}% + 10px)`;
 };
