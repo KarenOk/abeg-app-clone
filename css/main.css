@@ -30,6 +30,10 @@ body {
     height: 100vh;
 }
 
+.mobile__content {
+    display: none;
+}
+
 .max-page-width {
     max-width: 1200px;
     margin-left: auto;
@@ -364,6 +368,7 @@ main {
     background: rgba(151, 162, 228, 0.2);
     height: 2px;
     position: relative;
+    width: 90%;
 }
 
 .footer__progress {
@@ -494,5 +499,15 @@ main {
     }
     100% {
         width: 0%;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    body>*:not(.mobile__content) {
+        display: none;
+    }
+    .mobile__content {
+        display: block;
+        margin: 5pc 2pc;
     }
 }
